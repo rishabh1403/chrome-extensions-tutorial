@@ -11,6 +11,7 @@
   },
   "browser_action":{
     "default_icon":"./icons/16.png",
-    "default_popup":"index.html"
+    "default_popup":"index.html",
+    "default_title": "Bye Bye World!!!"
   }
 }
