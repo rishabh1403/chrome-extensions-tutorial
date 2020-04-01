@@ -12,6 +12,9 @@ function remind(){
     console.log("It's not a number");
   }else{
     console.log(minutes);
+    chrome.runtime.sendMessage({minutes}, function(response) {
+      console.log(response);
+    });
   }
 
   // create a reminder here
