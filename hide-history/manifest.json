@@ -1,0 +1,9 @@
+{
+  "manifest_version": 2,
+  "name":"Hide history",
+  "version": "1.0.0",
+
+  "chrome_url_overrides": {
+    "history" : "index.html"
+  }
+}
