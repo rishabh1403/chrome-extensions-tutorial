@@ -19,5 +19,6 @@
   "permissions":[
     "alarms",
     "notifications"
-  ]
+  ],
+  "omnibox": { "keyword" : "stuart"}
 }
