@@ -13,5 +13,9 @@
     "default_icon":"./icons/16.png",
     "default_popup":"index.html",
     "default_title": "Bye Bye World!!!"
+  },
+  "options_ui":{
+    "page":"option.html",
+    "open_in_tab":false
   }
 }
