@@ -48,3 +48,14 @@ chrome.storage.sync.set({Name: "Stuart"}, function(){
     console.log(result)
   })
 })
+
+chrome.contextMenus.create({
+  "id" : "Some id",
+  "title" : "My Context Menu",
+  "contexts": ["page"]
+})
+
+chrome.contextMenus.onClicked.addListener(function(clickData,tab){
+  console.log(clickData)
+  console.log(tab)
+})

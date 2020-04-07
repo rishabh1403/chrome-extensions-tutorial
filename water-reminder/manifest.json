@@ -19,7 +19,8 @@
   "permissions":[
     "alarms",
     "notifications",
-    "storage"
+    "storage",
+    "contextMenus"
   ],
   "omnibox": { "keyword" : "stuart"}
 }
