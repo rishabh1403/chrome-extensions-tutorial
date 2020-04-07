@@ -39,3 +39,12 @@ chrome.omnibox.onInputChanged.addListener(function (text, suggest) {
 })
 
 chrome.omnibox.setDefaultSuggestion({description: "Default suggestion here"})
+
+chrome.storage.sync.set({Name: "Stuart"}, function(){
+  // when set runs
+  console.log("value is set");
+
+  chrome.storage.sync.get(['Name'], function(result){
+    console.log(result)
+  })
+})
