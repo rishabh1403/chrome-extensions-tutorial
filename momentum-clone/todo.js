@@ -1,56 +1,67 @@
 $(function () {
-  let tasks = []
-
-  function saveToStorage(tasks){
-
-  }
-
-  function getFromStorage(callback){
-    chrome.storage.sync.get(['tasks'],function(result){
-      console.log(result)
-      if(result && result.tasks){
-        callback(result.tasks)
-      }else{
-        callback([])
-      }
-    })
-  }
-
-  getFromStorage(function(tasks){
-    tasks = tasks
-  })
 
   function printTasks() {
-    let str = "";
-    $("#tasks").empty()
-    for (const task of tasks) {
-      str = `${str}
+    getFromStorage(function (tasks) {
+      let str = "";
+      $("#tasks").empty()
+      for (const task of tasks) {
+        str = `${str}
     <li class=${task.done ? "complete" : "incomplete"}>
     <input ${task.done ? "checked" : ""} class="done" type="checkbox"/>
     ${task.name}
     <button class="delete">Delete</button>
     </li>`
-    }
-    $("#tasks").append(str)
-    
+      }
+      $("#tasks").append(str)
+    })
   }
+
+  function saveToStorage(tasks) {
+    chrome.storage.sync.set({ tasks }, function () {
+      printTasks()
+    })
+  }
+
+  function getFromStorage(callback) {
+    chrome.storage.sync.get(['tasks'], function (result) {
+      if (result && result.tasks) {
+        callback(result.tasks)
+      } else {
+        callback([])
+      }
+    })
+  }
+
+  
 
   printTasks()
 
   $(document).on("click", ".done", function () {
-    console.log($(this).parent().index())
-    tasks[$(this).parent().index()].done = !tasks[$(this).parent().index()].done;
-    console.log(tasks)
-    printTasks()
-    saveToStorage({tasks})
+    const that = this
+    getFromStorage(function (tasks) {
+      tasks[$(that).parent().index()].done = !tasks[$(that).parent().index()].done;
+      saveToStorage(tasks)
+    })
   })
 
   $(document).on("click", ".delete", function () {
-    console.log($(this).parent().index())
-    const index = $(this).parent().index();
-    tasks.splice(index, 1)
-    console.log(tasks)
-    printTasks()
-    saveToStorage({tasks})
+    const that = this
+    getFromStorage(function (tasks) {
+      const index = $(that).parent().index();
+      tasks.splice(index, 1)
+      saveToStorage(tasks)
+    })
+  })
+
+  $("#addTask").on("click",function(){
+    const value = $("#newTask").val();
+
+    getFromStorage(function (tasks) {
+      tasks.push({
+        name : value,
+        done: false
+      })
+      saveToStorage(tasks)
+    })
   })
 })
