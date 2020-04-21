@@ -5,5 +5,8 @@
   "description":"Dummy momentum clone",
   "chrome_url_overrides":{
     "newtab": "index.html"
-  }
+  },
+  "permissions":[
+    "geolocation"
+  ]
 }
