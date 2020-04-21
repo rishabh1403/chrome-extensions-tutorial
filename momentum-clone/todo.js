@@ -1,23 +1,38 @@
 $(function () {
-  const tasks = [
-    { name: "One", done: false },
-    { name: "two", done: true },
-    { name: "three", done: false },
-    { name: "four", done: false }
-  ]
+  let tasks = []
+
+  function saveToStorage(tasks){
+
+  }
+
+  function getFromStorage(callback){
+    chrome.storage.sync.get(['tasks'],function(result){
+      console.log(result)
+      if(result && result.tasks){
+        callback(result.tasks)
+      }else{
+        callback([])
+      }
+    })
+  }
+
+  getFromStorage(function(tasks){
+    tasks = tasks
+  })
 
   function printTasks() {
     let str = "";
     $("#tasks").empty()
     for (const task of tasks) {
       str = `${str}
-    <li>
-    <input class="done" type="checkbox"/>
+    <li class=${task.done ? "complete" : "incomplete"}>
+    <input ${task.done ? "checked" : ""} class="done" type="checkbox"/>
     ${task.name}
     <button class="delete">Delete</button>
     </li>`
     }
     $("#tasks").append(str)
+    
   }
 
   printTasks()
@@ -26,6 +41,8 @@ $(function () {
     console.log($(this).parent().index())
     tasks[$(this).parent().index()].done = !tasks[$(this).parent().index()].done;
     console.log(tasks)
+    printTasks()
+    saveToStorage({tasks})
   })
 
   $(document).on("click", ".delete", function () {
@@ -34,5 +51,6 @@ $(function () {
     tasks.splice(index, 1)
     console.log(tasks)
     printTasks()
+    saveToStorage({tasks})
   })
 })
