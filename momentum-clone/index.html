@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="bg"></div>
-  <div class="container">
-    <div id="header">
-      <img src="" alt="" id="weather-icon">
-      <div id="weather"></div>
-    </div>
-    <div id="center">
-      <div id="time"></div>
-      <div id="quote"></div>
-    </div>
-    <div id="footer"></div>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="bg"></div>
+    <div class="container">
+      <div id="header">
+        <div id="weather">
+        <div>
+          <img src="" alt="" id="weather-icon" />
+        </div>
 
-  <script src="jq.js"></script>
-  <script src="background-image.js"></script>
-  <script src="time.js"></script>
-  <script src="quote.js"></script>
-  <script src="weather.js"></script>
-</body>
+        <div>
+          <span id="temperature"></span>&#8451;
+        </div>
+      </div>
+      </div>
+      <div id="center">
+        <div id="time"></div>
+        <div id="quote"></div>
+      </div>
+      <div id="footer"></div>
+    </div>
+
+    <script src="jq.js"></script>
+    <script src="background-image.js"></script>
+    <script src="time.js"></script>
+    <script src="quote.js"></script>
+    <script src="weather.js"></script>
+  </body>
 </html>

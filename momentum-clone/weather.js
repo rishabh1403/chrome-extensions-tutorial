@@ -35,7 +35,7 @@ $(function(){
         console.log(data)
         console.log(data.current.temp)
         console.log(data.current.weather[0].icon)
-        $("#weather").text(data.current.temp)
+        $("#temperature").text(data.current.temp)
         const imageUrl = `http://openweathermap.org/img/wn/`
         $("#weather-icon").attr("src", `${imageUrl}${data.current.weather[0].icon}.png`)
         // 
