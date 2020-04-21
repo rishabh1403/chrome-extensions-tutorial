@@ -1,5 +1,4 @@
 $(function () {
-
   function printTasks() {
     getFromStorage(function (tasks) {
       let str = "";
@@ -32,7 +31,7 @@ $(function () {
     })
   }
 
-  
+
 
   printTasks()
 
@@ -53,15 +52,20 @@ $(function () {
     })
   })
 
-  $("#addTask").on("click",function(){
+  $("#addTask").on("click", function () {
     const value = $("#newTask").val();
 
     getFromStorage(function (tasks) {
       tasks.push({
-        name : value,
+        name: value,
         done: false
       })
       saveToStorage(tasks)
     })
   })
+
+  $("#todo").on("click", function () {
+    $("#card").fadeToggle();
+  })
+
 })

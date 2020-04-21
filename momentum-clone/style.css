@@ -56,13 +56,25 @@ html{
 
 #card{
   background-color: rgba(0,0,0,0.6);
-  width: 50%;
-  height: 600px;
+  width: 300px;
+  height: 250px;
   position: absolute;
-  bottom: 50px;
-  right: 50px;
+  bottom: 30px;
+  right: 80px;
+  padding:20px
 }
 
+#card > ul {
+  list-style: none;
+  padding-left: 20px;
+}
 .complete{
   text-decoration: line-through;
+}
+
+#todo{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 30px;
 }
